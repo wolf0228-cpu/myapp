@@ -1,30 +1,31 @@
-# 🚀 개발 워크스테이션 구축 및 웹 서버 배포 프로젝트
+# 🐳 Docker를 이용한 Nginx 웹 서버 구축 과제
 
 ## 1. 프로젝트 개요
-- **목표**: Docker를 이용한 Nginx 웹 서버 구축, 커스텀 이미지 생성 및 GitHub/Docker Hub 배포.
-- **성과**: 컨테이너 기술의 기초를 습득하고, 환경에 구애받지 않는 배포 파이프라인 구축 완료.
+- **작성자**: 이상오 (학번: 00000000)
+- **목표**: Docker를 사용하여 Nginx 웹 서버를 구축하고, GitHub 및 Docker Hub에 배포한다.
 
-## 2. 실행 환경
-- **운영체제**: Windows 11 (WSL2)
-- **Terminal**: PowerShell / VSCode Terminal
-- **Docker 버전**: 27.2.0
-- **Git 버전**: 2.46.0
+## 2. 개발 환경
+- **OS**: Windows 11
+- **Tool**: Docker Desktop, VS Code, Git
+- **Base Image**: nginx:latest
 
-## 3. 수행 항목 체크리스트
-- [x] Docker Desktop 설치 및 환경 설정
-- [x] Nginx 베이스 Dockerfile 작성
-- [x] 포트 매핑 (8080:80) 설정 및 접속 확인
-- [x] Docker Hub 이미지 Push 성공 (`wolf02284075/my-web-app`)
-- [x] GitHub 저장소 연동 및 소스 관리
-- [x] 프로젝트 증빙용 스크린샷 정리 (`/images` 폴더)
+## 3. 주요 수행 내용
+- [x] `index.html` 작성 (이름, 학번, 배경색 포함)
+- [x] `Dockerfile` 작성 및 이미지 빌드
+- [x] Docker 컨테이너 실행 및 포트 포워딩 (8080:80)
+- [x] GitHub 원격 저장소 생성 및 소스 코드 푸시 (총 9회 커밋)
+- [x] Docker Hub 이미지 푸시 (`wolf02284075/my-web-app:latest`)
 
-## 4. 터미널 운영 로그 (핵심 명령)
+## 4. 문제 해결 및 트러블슈팅
+- **문제**: Dockerfile 파일명이 한글(`도커파일`)로 되어 있어 빌드 시 인식이 안 되는 문제 발생.
+- **해결**: 파일명을 영문 `Dockerfile`로 수정하여 표준 규격을 맞춤.
+- **문제**: GitHub 푸시 중 충돌 발생.
+- **해결**: 로컬과 원격 저장소의 상태를 동기화한 후 다시 푸시하여 해결.
+
+## 5. 실행 방법
 ```bash
-# 이미지 빌드
-docker build -t wolf02284075/my-web-app:latest .
+# Docker Hub에서 이미지 다운로드
+docker pull wolf02284075/my-web-app:latest
 
-# 컨테이너 실행 (포트 8080 연결)
-docker run -d -p 8080:80 --name my-web-container wolf02284075/my-web-app:latest
-
-# Docker Hub 배포
-docker push wolf02284075/my-web-app:latest
+# 컨테이너 실행
+docker run -d -p 8080:80 --name my-web-server wolf02284075/my-web-app:latest
