@@ -29,3 +29,8 @@ docker pull wolf02284075/my-web-app:latest
 
 # 컨테이너 실행
 docker run -d -p 8080:80 --name my-web-server wolf02284075/my-web-app:latest
+## 6. 실습결과(이미지)
+![alt text](<images/Docker Hub 업로드 화면 (docker_hub.png).png>)
+![alt text](<images/GitHub 저장소 화면 (github_repo.png).png>)
+![alt text](<images/도커 실행 확인 화면 (docker_ps.png).png>)
+![alt text](<images/웹 브라우저 접속 화면 (web_result.png).png>)
