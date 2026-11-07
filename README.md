@@ -1,45 +1,22 @@
-# 🐳 Docker를 이용한 Nginx 웹 서버 구축 과제
+# 🐳 Docker를 이용한 웹 서버 구축 및 배포 실습
 
-## 1. 프로젝트 개요
-- **작성자**: 이상오 (학번: 00000000)
-- **목표**: Docker를 사용하여 Nginx 웹 서버를 구축하고, GitHub 및 Docker Hub에 배포한다.
+본 프로젝트는 Nginx를 기반으로 커스텀 웹 페이지를 제작하고, Docker 컨테이너 기술을 활용하여 로컬 실행 및 클라우드 저장소(GitHub, Docker Hub)에 배포하는 과정을 수행한 결과물입니다.
 
-## 2. 개발 환경
+## 1. 실습 환경
 - **OS**: Windows 11
-- **Tool**: Docker Desktop, VS Code, Git
-- **Base Image**: nginx:latest
+- **Docker**: Docker Desktop 27.2.0
+- **Git**: Git 2.46.0
+- **IDE**: Visual Studio Code
 
-## 3. 주요 수행 내용
-- [x] `index.html` 작성 (이름, 학번, 배경색 포함)
-- [x] `Dockerfile` 작성 및 이미지 빌드
-- [x] Docker 컨테이너 실행 및 포트 포워딩 (8080:80)
-- [x] GitHub 원격 저장소 생성 및 소스 코드 푸시 (총 9회 커밋)
-- [x] Docker Hub 이미지 푸시 (`wolf02284075/my-web-app:latest`)
+## 2. 프로젝트 구성 파일
+- `index.html`: 사용자 정보(이상오 / 학번)와 스타일이 적용된 메인 페이지
+- `Dockerfile`: Nginx 베이스 이미지를 활용한 이미지 빌드 설정 파일
+- `.gitignore`: 불필요한 설정 파일 및 폴더 제외 설정
+- `images/`: 실습 결과 캡처 이미지 저장 폴더
 
-## 4. 문제 해결 및 트러블슈팅
-- **문제**: Dockerfile 파일명이 한글(`도커파일`)로 되어 있어 빌드 시 인식이 안 되는 문제 발생.
-- **해결**: 파일명을 영문 `Dockerfile`로 수정하여 표준 규격을 맞춤.
-- **문제**: GitHub 푸시 중 충돌 발생.
-- **해결**: 로컬과 원격 저장소의 상태를 동기화한 후 다시 푸시하여 해결.
-
-## 5. 실행 방법
-```bash
-# Docker Hub에서 이미지 다운로드
-docker pull wolf02284075/my-web-app:latest
-
-# 컨테이너 실행
-docker run -d -p 8080:80 --name my-web-server wolf02284075/my-web-app:latest
-## 6. 실습결과(이미지)
-## 6. 실습결과(이미지)
-
-### Docker Hub 업로드 결과
-![Docker Hub](images/docker_hub.png)
-
-### GitHub 저장소 구성
-![GitHub Repo](images/github_repo.png)
-
-### Docker 컨테이너 실행 확인
-![Docker PS](images/docker_ps.png)
-
-### 웹 브라우저 접속 화면
-![Web Result](images/web_result.png)
+## 3. 웹 페이지 및 Dockerfile 상세
+- **index.html**: 배경색 지정 및 CSS 스타일을 적용하여 가독성을 높인 웹 페이지 제작
+- **Dockerfile**: 
+  ```dockerfile
+  FROM nginx:latest
+  COPY index.html /usr/share/nginx/html/index.html
