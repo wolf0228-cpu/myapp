@@ -96,3 +96,22 @@ Docker 컨테이너 실행 시 포트 충돌(`Address already in use`)이 발생
     - `docker logs`에서 `bind() failed (98: Address already in use)` 확인.
     - `sudo lsof -i :80`으로 기존 Apache(httpd) 프로세스 확인.
 -   **조치 및 결과**: 기존 서비스 중단(`systemctl stop`) 후 컨테이너 정상 실행 확인.
+14. 리눅스 기본 명령어 실행 결과 (mkdir, touch, ls, mv, ls -R)
+
+- **파일 및 디렉토리 생성 확인 (`ls -l`)**
+```bash
+total 17
+-rw-r--r-- 1 wolf02284075 1049089   69 Nov  7 13:52 Dockerfile
+drwxr-xr-x 1 wolf02284075 1049089    0 Nov  7 17:47 images/
+-rw-r--r-- 1 wolf02284075 1049089 1826 Nov  7 15:51 index.html
+-rw-r--r-- 1 wolf02284075 1049089 4931 Nov  9 15:32 README.md
+drwxr-xr-x 1 wolf02284075 1049089    0 Nov  9 15:46 test_dir/
+-rw-r--r-- 1 wolf02284075 1049089    0 Nov  9 15:50 test_file.txt
+15. 파일 권한 설정 및 확인 (chmod, ls -l)
+
+- **권한 변경 전 (`ls -l`)**
+-rw-r--r-- 1 wolf02284075 1049089 0 Nov  9 16:00 perm_test.sh
+
+- **권한 변경 후 (`chmod 755`)**
+```bash
+-rwxr-xr-x 1 wolf02284075 1049089 0 Nov  9 16:00 perm_test.sh
