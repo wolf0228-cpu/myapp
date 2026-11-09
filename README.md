@@ -55,3 +55,13 @@ my-web-app:v2                    778315009707        241MB         63.9MB
 my-web-app:v3                    c3eb45137b4e        241MB         63.9MB
 nginx:latest                     165ddde8751e        243MB         66.8MB
 wolf02284075/my-web-app:latest   c0c15a050a03        241MB         63.9MB
+
+---
+
+## 🛠 평가 항목 보완 사항 (최종 제출)
+
+### [항목 #6] Docker Build 실행 로그
+이미지 빌드 과정에서 레이어가 생성되고 최종적으로 태그가 지정된 로그입니다.
+```text
+Successfully built 609cf1569371
+Successfully tagged my-web-app:latest
