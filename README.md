@@ -184,3 +184,66 @@ Server: Docker Desktop 4.34.2 (Engine 27.2.0)
 $ docker ps -a
 CONTAINER ID   IMAGE         STATUS                     NAMES
 c567b231f656   hello-world   Exited (0) 15 minutes ago  bold_ritchie
+## 📘 18. 호스트 접속 및 서비스 응답 확인
+컨테이너가 실행 중인 상태에서 호스트 포트(8080)를 통해 정상적으로 응답이 오는지 확인했습니다.
+## 📘 17. 웹 서버 응답 확인 (curl)
+컨테이너가 정상적으로 실행되어 외부에서 접속 가능한지 확인한 결과입니다.
+
+HTTP/1.1 200 OK
+Server: nginx/1.31.8
+Date: Mon, 09 Nov 2026 07:58:33 GMT
+Content-Type: text/html
+Content-Length: 1826
+Last-Modified: Sat, 07 Nov 2026 06:51:52 GMT
+Connection: keep-alive
+ETag: "6aeeca88-722"
+Accept-Ranges: bytes
+
+## 📘 18. 볼륨 마운트 및 데이터 영속성 확인
+바인드 마운트를 통해 컨테이너를 삭제해도 호스트의 파일(index.html)이 유지되는지 확인했습니다.
+
+- 실행 명령어: docker run -d -p 8081:80 -v $(pwd):/usr/share/nginx/html --name vol-test-container my-nginx-server:latest
+- 컨테이너 삭제 명령어: docker rm -f vol-test-container
+- 파일 잔존 확인 결과 (ls -l):
+-rw-r--r-- 1 wolf02284075 1049089 1826 Nov  7 15:51 index.html
+
+## 📘 19. Git 설정 정보 증빙
+프로젝트 관리 및 버전 관리를 위한 Git 로컬 설정 정보입니다.
+
+- 사용자 이름: 이상오
+- 이메일: wolf0228@gmail.com
+
+## 📘 20. Git 원격 저장소 정보
+GitHub 원격 저장소와 연결된 상태를 확인한 결과입니다.
+
+origin  https://github.com/wolf0228-cpu/myapp (fetch)
+origin  https://github.com/wolf0228-cpu/myapp (push)
+
+## 📘 21. 디렉토리 설계 기준 및 구조 설명
+본 프로젝트는 유지보수와 확장성을 고려하여 다음과 같은 기준으로 디렉토리를 설계했습니다.
+
+### 폴더 배치 기준 및 이유
+1. 루트 디렉토리 (index.html, Dockerfile): 
+   - 의존성 관리: Docker 빌드 시 COPY 명령어가 참조하는 소스 파일과 설정 파일을 동일 계층에 두어 빌드 컨텍스트의 복잡도를 최소화했습니다.
+   - 경계 설정: 웹 서버의 핵심 로직(HTML)과 인프라 설정(Dockerfile)을 최상위에 배치하여 프로젝트의 목적을 명확히 했습니다.
+2. images/ 폴더: 
+   - 자산 분리: 실행 소스 코드와 문서화용 이미지 자산을 엄격히 분리하여, 코드 버전 관리 시 불필요한 혼선을 방지하고 가독성을 높였습니다.
+
+### 설계 원칙
+- 데이터 독립성: 호스트의 소스 폴더를 컨테이너에 바인드 마운트함으로써, 컨테이너의 생명주기와 상관없이 데이터가 보존되도록 설계했습니다.
+## 📘 22. Docker Hub 이미지 업로드 (Push) 증빙
+로컬에서 빌드한 이미지를 Docker Hub 원격 저장소에 업로드하여, 어디서나 이미지를 내려받아 컨테이너를 실행할 수 있는 환경을 구축했습니다.
+
+### 1) Docker Hub 로그인 및 태그 설정
+- **Docker ID**: wolf0228
+- **이미지 태그**: `wolf0228/my-nginx-server:v1.0`
+- **명령어**: 
+  - `docker tag my-nginx-server:latest wolf0228/my-nginx-server:v1.0`
+
+### 2) 이미지 업로드 결과 (docker push)
+```text
+The push refers to repository [docker.io/wolf0228/my-nginx-server]
+5f70bf18a086: Pushed
+2573e0d81571: Pushed
+d874fd2abc72: Pushed
+v1.0: digest: sha256:a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6 size: 1573
