@@ -309,3 +309,6 @@ Successfully built 609cf1569371
 ```bash
 $ sudo ss -tulpn | grep :8080
 tcp   LISTEN 0      128       0.0.0.0:8080      0.0.0.0:*    users:(("docker-proxy",pid=1234,fd=4))
+$ docker logs my-web-app
+2023/10/27 14:20:15 [emerg] 1#1: bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
