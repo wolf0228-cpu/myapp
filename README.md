@@ -65,3 +65,10 @@ wolf02284075/my-web-app:latest   c0c15a050a03        241MB         63.9MB
 ```text
 Successfully built 609cf1569371
 Successfully tagged my-web-app:latest
+##  추가 이론 및 상세 명세 (평가 항목 #11~#15)
+
+### 11. 컨테이너 실행 및 재현 절차 (#11)
+이미지를 빌드한 후, 아래 명령어를 통해 포트와 볼륨이 매핑된 컨테이너를 실행할 수 있습니다.
+- **실행 명령어:**
+  ```bash
+  docker run -d -p 8080:80 -v "$(pwd):/usr/share/nginx/html" --name my-web-server my-web-app:latest
