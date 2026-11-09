@@ -36,3 +36,22 @@
 ### 5.1 이미지 빌드
 ```bash
 docker build -t my-web-app:latest .
+## 🚀 최종 실행 결과 확인
+
+### 1. Docker 실행 테스트 (hello-world)
+```text
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it to your terminal.
+ IMAGE                            ID             DISK USAGE   CONTENT SIZE
+hello-world:latest               c567b231f656       25.9kB         9.49kB
+my-web-app:latest                c0c15a050a03        241MB         63.9MB
+my-web-app:v2                    778315009707        241MB         63.9MB
+my-web-app:v3                    c3eb45137b4e        241MB         63.9MB
+nginx:latest                     165ddde8751e        243MB         66.8MB
+wolf02284075/my-web-app:latest   c0c15a050a03        241MB         63.9MB
