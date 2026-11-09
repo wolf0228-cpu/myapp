@@ -165,4 +165,22 @@ To generate this message, Docker took the following steps:
  $ docker ps -a
 CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
 c567b231f656   hello-world   "/hello"   15 minutes ago   Exited (0) 15 minutes ago             bold_ritchie
+# 🐳 Docker 실습 및 웹 서버 구축 최종 보고서
 
+본 보고서는 Docker 환경 구축부터 웹 서버 배포, 데이터 영속성 관리 및 Git 협업 설정까지의 전 과정을 기록한 최종본입니다.
+
+---
+
+### [항목 #17] Docker Hello-World 실행 (데몬 작동 확인)
+Docker 엔진이 정상적으로 설치되어 작동하는지 확인하기 위해 테스트 이미지를 실행하였습니다.
+```bash
+$ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+$ docker version
+Client: Version 27.2.0
+Server: Docker Desktop 4.34.2 (Engine 27.2.0)
+$ docker ps -a
+CONTAINER ID   IMAGE         STATUS                     NAMES
+c567b231f656   hello-world   Exited (0) 15 minutes ago  bold_ritchie
