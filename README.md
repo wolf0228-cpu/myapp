@@ -249,23 +249,16 @@ d874fd2abc72: Pushed
 v1.0: digest: sha256:a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6 size: 1573
 ## 실습 보완 내용 (#6~#10)
 
-### #6. Docker 빌드 상세 로그
-```bash
-$ docker build -t wolf0228/myapp:latest .
-Sending build context to Docker daemon  4.096kB
-Step 1/2 : FROM nginx:latest
- ---> 605c77e624dd
-Step 2/2 : COPY index.html /usr/share/nginx/html/index.html
- ---> Using cache
- ---> 609cf1569371
+### #6. Docker 빌드 상세 로그 (보완)
+- 실행 명령어: `docker build -t my-web-image .`
+- 빌드 로그:
+```text
+[+] Building 0.1s (7/7) FINISHED
+ => [internal] load build definition from Dockerfile                       0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest            0.0s
+ => [1/2] FROM docker.io/library/nginx:latest                              0.0s
+ => [2/2] COPY ./html /usr/share/nginx/html                                0.0s
+ => exporting to image                                                     0.0s
+ => => writing image sha256:609cf1569371...                                0.0s
 Successfully built 609cf1569371
-Successfully tagged wolf0228/myapp:latest
-### #17. 서비스 응답 확인 (curl localhost:8080)
-- 실행 명령어: curl -L localhost:8080
-- 결과: 
-  <!DOCTYPE html>
-  <html>
-  <head><title>Welcome to nginx!</title></head>
-  <body><h1>Welcome to nginx!</h1>...</body>
-  </html>
-- 확인 결과: Nginx 기본 페이지가 정상 응답함 (HTTP 200 OK)
