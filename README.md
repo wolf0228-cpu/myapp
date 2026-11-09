@@ -247,3 +247,16 @@ The push refers to repository [docker.io/wolf0228/my-nginx-server]
 2573e0d81571: Pushed
 d874fd2abc72: Pushed
 v1.0: digest: sha256:a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6 size: 1573
+## 실습 보완 내용 (#6~#10)
+
+### #6. Docker 빌드 상세 로그
+```bash
+$ docker build -t wolf0228/myapp:latest .
+Sending build context to Docker daemon  4.096kB
+Step 1/2 : FROM nginx:latest
+ ---> 605c77e624dd
+Step 2/2 : COPY index.html /usr/share/nginx/html/index.html
+ ---> Using cache
+ ---> 609cf1569371
+Successfully built 609cf1569371
+Successfully tagged wolf0228/myapp:latest
