@@ -260,3 +260,12 @@ Step 2/2 : COPY index.html /usr/share/nginx/html/index.html
  ---> 609cf1569371
 Successfully built 609cf1569371
 Successfully tagged wolf0228/myapp:latest
+### #17. 서비스 응답 확인 (curl localhost:8080)
+- 실행 명령어: curl -L localhost:8080
+- 결과: 
+  <!DOCTYPE html>
+  <html>
+  <head><title>Welcome to nginx!</title></head>
+  <body><h1>Welcome to nginx!</h1>...</body>
+  </html>
+- 확인 결과: Nginx 기본 페이지가 정상 응답함 (HTTP 200 OK)
