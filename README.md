@@ -113,5 +113,56 @@ drwxr-xr-x 1 wolf02284075 1049089    0 Nov  9 15:46 test_dir/
 -rw-r--r-- 1 wolf02284075 1049089 0 Nov  9 16:00 perm_test.sh
 
 - **권한 변경 후 (`chmod 755`)**
+ ```bash
+ -rwxr-xr-x 1 wolf02284075 1049089 0 Nov  9 16:00 perm_test.sh
+ ```
+### 16. Docker 설치 버전 및 데몬 상태 확인
 ```bash
--rwxr-xr-x 1 wolf02284075 1049089 0 Nov  9 16:00 perm_test.sh
+$ docker --version
+Docker version 27.2.0, build 3d42526
+
+$ docker version
+Client:
+ Version:           27.2.0
+ API version:       1.47
+ Go version:        go1.21.13
+ Git commit:        3d42526
+ Built:             Tue Aug 27 14:16:45 2024
+ OS/Arch:           windows/amd64
+ Context:           desktop-linux
+
+Server: Docker Desktop 4.34.2 (167172)
+ Engine:
+  Version:          27.2.0
+  API version:      1.47 (minimum version 1.24)
+  Go version:       go1.21.13
+  Git commit:       86238c2
+  Built:            Tue Aug 27 14:13:02 2024
+  OS/Arch:          linux/amd64
+  $ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image.
+ 4. The Docker daemon streamed that output to the Docker client.
+ $ docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+c567b231f656   hello-world   "/hello"   15 minutes ago   Exited (0) 15 minutes ago             bold_ritchie
+$ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image.
+ 4. The Docker daemon streamed that output to the Docker client.
+ $ docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+c567b231f656   hello-world   "/hello"   15 minutes ago   Exited (0) 15 minutes ago             bold_ritchie
+
