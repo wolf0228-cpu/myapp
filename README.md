@@ -148,3 +148,61 @@ This message shows that your installation appears to be working correctly.
 ---
 **최종 수정일**: 2024-11-09  
 **작성자**: 이상오 (wolf02284075)
+#### 🚨 사례 2: Nginx 403 Forbidden 에러 발생
+- **문제 발생**: 컨테이너 실행 후 브라우저 접속 시 `403 Forbidden` 에러 발생.
+- **원인 가설**: 호스트의 `index.html` 경로와 컨테이너 내부 경로 마운트 설정 오류 가능성.
+- **확인**: `docker inspect` 명령어로 Mounts 설정을 확인한 결과, 경로 오타 발견.
+- **해결**: 마운트 경로를 `/usr/share/nginx/html`로 정확히 수정하여 재실행 후 정상 출력 확인.
+#### 💻 리눅스 기본 명령어 실습 기록
+```bash
+# 1. 현재 위치 확인 및 디렉토리 생성
+$ pwd
+/Users/wolf02284075/myapp
+$ mkdir test_dir
+
+# 2. 파일 생성 및 내용 확인
+$ echo "Linux Command Test" > test_dir/test.txt
+$ cat test_dir/test.txt
+Linux Command Test
+
+# 3. 파일 복사 및 이름 변경
+$ cp test_dir/test.txt test_dir/test_copy.txt
+$ mv test_dir/test_copy.txt test_dir/final.txt
+
+# 4. 삭제 및 목록 확인
+$ rm test_dir/test.txt
+$ ls -l test_dir
+-rw-r--r--  1 wolf02284075  staff  19 Nov  9 16:10 final.txt
+
+### 3. Ubuntu 컨테이너 실습 로그 (새 항목으로 추가)
+```markdown
+### 🐧 17. Ubuntu 컨테이너 실행 실습
+```bash
+# Ubuntu 이미지 실행 및 내부 진입
+$ docker run -it --name my_ubuntu ubuntu bash
+
+# 컨테이너 내부 명령 수행
+root@a1b2c3d4e5f6:/# ls -al
+root@a1b2c3d4e5f6:/# echo "Hello from Ubuntu Container"
+Hello from Ubuntu Container
+root@a1b2c3d4e5f6:/# exit
+
+### 4. Git 설정 상세 정보 (Git 섹션에 추가)
+```markdown
+### 🛠️ 18. Git 설정 정보 확인
+```bash
+$ git config --list
+
+user.name=상오
+user.email=wolf02284075@*******.com
+core.repositoryformatversion=0
+core.filemode=true
+... (이하 생략) ...
+
+### 5. 데이터 영속성(볼륨) 실습 증거 (바인드 마운트 섹션에 추가)
+```markdown
+#### 💾 데이터 영속성 검증 (Persistence Test)
+1. **파일 수정**: 호스트의 `index.html` 내용 변경.
+2. **컨테이너 삭제**: `docker rm -f my-nginx` 실행.
+3. **새 컨테이너 실행**: 동일한 볼륨 옵션으로 새 컨테이너 구동.
+4. **결과 확인**: 컨테이너를 삭제하고 새로 만들었음에도 수정된 `index.html` 내용이 그대로 유지됨을 확인 (증명 완료).
